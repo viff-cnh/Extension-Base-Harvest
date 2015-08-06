@@ -95,6 +95,9 @@ namespace Landis.Extension.BaseHarvest
             PlugIn.ModelCore.UI.WriteLine("   Reading stand map {0} ...", parameters.StandMap);
             Stands.ReadMap(parameters.StandMap);
 
+            //finish initializing SiteVars
+            SiteVars.GetExternalVars();
+
             //finish each managementArea's initialization
             //after reading the stand map, finish the initializations
             foreach (ManagementArea mgmtArea in managementAreas)
