@@ -29,6 +29,8 @@ namespace Landis.Extension.BaseHarvest
         int[] totalSites;
         int[] totalDamagedSites;
         int[,] totalSpeciesCohorts;
+        // 2015-09-14 LCB Track prescriptions as they are reported in summary log so we don't duplicate
+        bool[] presciptionReported;
 
         private IInputParameters parameters;
         private static ICore modelCore;
@@ -157,6 +159,7 @@ namespace Landis.Extension.BaseHarvest
                 totalSites = new int[Prescription.Count];
                 totalDamagedSites = new int[Prescription.Count];
                 totalSpeciesCohorts = new int[Prescription.Count, PlugIn.ModelCore.Species.Count];
+                presciptionReported = new bool[Prescription.Count];
 
                 mgmtArea.HarvestStands();
                 //and record each stand that's been harvested
@@ -193,27 +196,22 @@ namespace Landis.Extension.BaseHarvest
 
                 foreach (AppliedPrescription aprescription in mgmtArea.Prescriptions)
                 {
-                    /*
-                     * 2015-07-09 LCB
-                     * Check to see if prescription was actually applied before writing it to summary log
-                     */
-                    if(aprescription.ApplyPrescription) {
-                        Prescription prescription = aprescription.Prescription;
-                        string species_string = "";
-                        foreach (ISpecies species in PlugIn.ModelCore.Species)
-                            species_string += ", " + totalSpeciesCohorts[prescription.Number, species.Index];
+                    Prescription prescription = aprescription.Prescription;
+                    string species_string = "";
+                    foreach (ISpecies species in PlugIn.ModelCore.Species)
+                        species_string += ", " + totalSpeciesCohorts[prescription.Number, species.Index];
 
-                        if(totalSites[prescription.Number] > 0)
-                            summaryLog.WriteLine("{0},{1},{2},{3}{4}",
-                                PlugIn.ModelCore.CurrentTime,
-                                mgmtArea.MapCode,
-                                prescription.Name,
-                                totalDamagedSites[prescription.Number],
-                                species_string);
+                    if (totalSites[prescription.Number] > 0 && presciptionReported[prescription.Number] != true)
+                    {
+                        summaryLog.WriteLine("{0},{1},{2},{3}{4}",
+                            PlugIn.ModelCore.CurrentTime,
+                            mgmtArea.MapCode,
+                            prescription.Name,
+                            totalDamagedSites[prescription.Number],
+                            species_string);
+                        presciptionReported[prescription.Number] = true;
                     }
-
                 }
-
             }
             prescriptionMaps.WriteMap(PlugIn.ModelCore.CurrentTime);
 
