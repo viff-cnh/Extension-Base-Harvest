@@ -30,7 +30,7 @@ namespace Landis.Extension.BaseHarvest
         int[] totalDamagedSites;
         int[,] totalSpeciesCohorts;
         // 2015-09-14 LCB Track prescriptions as they are reported in summary log so we don't duplicate
-        bool[] presciptionReported;
+        bool[] prescriptionReported;
 
         private IInputParameters parameters;
         private static ICore modelCore;
@@ -159,7 +159,7 @@ namespace Landis.Extension.BaseHarvest
                 totalSites = new int[Prescription.Count];
                 totalDamagedSites = new int[Prescription.Count];
                 totalSpeciesCohorts = new int[Prescription.Count, PlugIn.ModelCore.Species.Count];
-                presciptionReported = new bool[Prescription.Count];
+                prescriptionReported = new bool[Prescription.Count];
 
                 mgmtArea.HarvestStands();
                 //and record each stand that's been harvested
@@ -201,7 +201,7 @@ namespace Landis.Extension.BaseHarvest
                     foreach (ISpecies species in PlugIn.ModelCore.Species)
                         species_string += ", " + totalSpeciesCohorts[prescription.Number, species.Index];
 
-                    if (totalSites[prescription.Number] > 0 && presciptionReported[prescription.Number] != true)
+                    if (totalSites[prescription.Number] > 0 && prescriptionReported[prescription.Number] != true)
                     {
                         summaryLog.WriteLine("{0},{1},{2},{3}{4}",
                             PlugIn.ModelCore.CurrentTime,
@@ -209,7 +209,7 @@ namespace Landis.Extension.BaseHarvest
                             prescription.Name,
                             totalDamagedSites[prescription.Number],
                             species_string);
-                        presciptionReported[prescription.Number] = true;
+                        prescriptionReported[prescription.Number] = true;
                     }
                 }
             }
