@@ -125,6 +125,8 @@ namespace Landis.Extension.BaseHarvest
             for (i = 0; i < PlugIn.ModelCore.Species.Count; i++) {
                 species_header_names += PlugIn.ModelCore.Species[i].Name + ",";
             }
+            //Trim trailing comma so we don't add an extra column
+            species_header_names = species_header_names.TrimEnd(',');
 
             log.WriteLine("Time,ManagementArea,Prescription,Stand,EventId,StandAge,StandRank,NumberOfSites,HarvestedSites,CohortsKilled,{0}", species_header_names);
 
@@ -277,6 +279,8 @@ namespace Landis.Extension.BaseHarvest
                 species_count += string.Format("{0},", cohortCount);
                 totalSpeciesCohorts[standPrescriptionNumber, species.Index] += cohortCount;
             }
+            //Trim trailing comma so we don't add an extra column
+            species_count = species_count.TrimEnd(',');
 
             //now that the damage table for this stand has been recorded, clear it!!
             stand.ClearDamageTable();
