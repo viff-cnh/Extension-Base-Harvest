@@ -4,6 +4,7 @@ using Edu.Wisc.Forest.Flel.Util;
 using Landis.Core;
 using Landis.Library.HarvestManagement;
 using Landis.Library.Succession;
+using Landis.Library.Metadata;
 using Landis.SpatialModeling;
 using System.Collections.Generic;
 using System.IO;
