@@ -1,7 +1,4 @@
 // This file is part of the Base Harvest extension for LANDIS-II.
-// For copyright and licensing information, see the NOTICE and LICENSE
-// files in this project's top-level directory, and at:
-//   http://landis-extensions.googlecode.com/svn/trunk/base-harvest/trunk/
 
 using Edu.Wisc.Forest.Flel.Util;
 using Landis.Core;
@@ -21,8 +18,10 @@ namespace Landis.Extension.BaseHarvest
 
         private IManagementAreaDataset managementAreas;
         private PrescriptionMaps prescriptionMaps;
-        private StreamWriter log;
-        private StreamWriter summaryLog;
+        public static MetadataTable<EventsLog> eventLog;
+        public static MetadataTable<SummaryLog> summaryLog;
+        //private StreamWriter log;
+        //private StreamWriter summaryLog;
         private static int event_id;
         private static double current_rank;     //need a global to keep track of the current stand's rank.  just for log file.
 
@@ -88,6 +87,7 @@ namespace Landis.Extension.BaseHarvest
         {
             //initialize event id
             event_id = 1;
+            MetadataHandler.InitializeMetadata(parameters.Timestep, parameters.PrescriptionMapNames, modelCore);
             Timestep = parameters.Timestep;
             managementAreas = parameters.ManagementAreas;
             PlugIn.ModelCore.UI.WriteLine("   Reading management-area map {0} ...", parameters.ManagementAreaMap);
@@ -108,40 +108,40 @@ namespace Landis.Extension.BaseHarvest
             prescriptionMaps = new PrescriptionMaps(parameters.PrescriptionMapNames);
 
             //open log file and write header
-            PlugIn.ModelCore.UI.WriteLine("   Opening harvest log file \"{0}\" ...", parameters.EventLog);
+            //PlugIn.ModelCore.UI.WriteLine("   Opening harvest log file \"{0}\" ...", parameters.EventLog);
 
-            try {
-                log = Landis.Data.CreateTextFile(parameters.EventLog);
-            }
-            catch (Exception err) {
-                string mesg = string.Format("{0}", err.Message);
-                throw new System.ApplicationException(mesg);
-            }
-            log.AutoFlush = true;
+            //try {
+            //    log = Landis.Data.CreateTextFile(parameters.EventLog);
+            //}
+            //catch (Exception err) {
+            //    string mesg = string.Format("{0}", err.Message);
+            //    throw new System.ApplicationException(mesg);
+            //}
+            //log.AutoFlush = true;
             
             //include a column for each species in the species dictionary
-            string species_header_names = "";
-            int i = 0;
-            for (i = 0; i < PlugIn.ModelCore.Species.Count; i++) {
-                species_header_names += PlugIn.ModelCore.Species[i].Name + ",";
-            }
-            //Trim trailing comma so we don't add an extra column
-            species_header_names = species_header_names.TrimEnd(',');
+            //string species_header_names = "";
+            //int i = 0;
+            //for (i = 0; i < PlugIn.ModelCore.Species.Count; i++) {
+            //    species_header_names += PlugIn.ModelCore.Species[i].Name + ",";
+            //}
+            ////Trim trailing comma so we don't add an extra column
+            //species_header_names = species_header_names.TrimEnd(',');
 
-            log.WriteLine("Time,ManagementArea,Prescription,Stand,EventId,StandAge,StandRank,NumberOfSites,HarvestedSites,CohortsKilled,{0}", species_header_names);
+            //log.WriteLine("Time,ManagementArea,Prescription,Stand,EventId,StandAge,StandRank,NumberOfSites,HarvestedSites,CohortsKilled,{0}", species_header_names);
 
-            PlugIn.ModelCore.UI.WriteLine("   Opening summary harvest log file \"{0}\" ...", parameters.SummaryLog);
+            //PlugIn.ModelCore.UI.WriteLine("   Opening summary harvest log file \"{0}\" ...", parameters.SummaryLog);
 
-            try {
-                summaryLog = Landis.Data.CreateTextFile(parameters.SummaryLog);
-            }
-            catch (Exception err) {
-                string mesg = string.Format("{0}", err.Message);
-                throw new System.ApplicationException(mesg);
-            }
-            summaryLog.AutoFlush = true;
+            //try {
+            //    summaryLog = Landis.Data.CreateTextFile(parameters.SummaryLog);
+            //}
+            //catch (Exception err) {
+            //    string mesg = string.Format("{0}", err.Message);
+            //    throw new System.ApplicationException(mesg);
+            //}
+            //summaryLog.AutoFlush = true;
 
-            summaryLog.WriteLine("Time,ManagementArea,Prescription,HarvestedSites,{0}", species_header_names);
+            //summaryLog.WriteLine("Time,ManagementArea,Prescription,HarvestedSites,{0}", species_header_names);
 
 
         }
@@ -205,12 +205,22 @@ namespace Landis.Extension.BaseHarvest
 
                     if (totalSites[prescription.Number] > 0 && prescriptionReported[prescription.Number] != true)
                     {
-                        summaryLog.WriteLine("{0},{1},{2},{3}{4}",
-                            PlugIn.ModelCore.CurrentTime,
-                            mgmtArea.MapCode,
-                            prescription.Name,
-                            totalDamagedSites[prescription.Number],
-                            species_string);
+                        //summaryLog.WriteLine("{0},{1},{2},{3}{4}",
+                        //    PlugIn.ModelCore.CurrentTime,
+                        //    mgmtArea.MapCode,
+                        //    prescription.Name,
+                        //    totalDamagedSites[prescription.Number],
+                        //    species_string);
+                        summaryLog.Clear();
+                        SummaryLog sl = new SummaryLog();
+                        sl.Time = modelCore.CurrentTime;
+                        sl.ManagementArea = mgmtArea.MapCode;
+                        sl.Prescription = prescription.Name;
+                        sl.TotalHarvestedSites = totalDamagedSites[prescription.Number];
+                        sl.CohortsHarvested_ = species_string;
+                        summaryLog.AddObject(sl);
+                        summaryLog.WriteToFile();
+                        
                         prescriptionReported[prescription.Number] = true;
                     }
                 }
@@ -271,16 +281,18 @@ namespace Landis.Extension.BaseHarvest
             totalDamagedSites[standPrescriptionNumber] += damagedSites;
 
             //csv string for log file, contains species kill count
-            string species_count = "";
+            //string species_count = "";
+            double[] species_count = new double[modelCore.Species.Count];
 
             foreach (ISpecies species in PlugIn.ModelCore.Species)
             {
                 int cohortCount = stand.DamageTable[species];
-                species_count += string.Format("{0},", cohortCount);
+                species_count[species.Index] += cohortCount;
                 totalSpeciesCohorts[standPrescriptionNumber, species.Index] += cohortCount;
             }
             //Trim trailing comma so we don't add an extra column
-            species_count = species_count.TrimEnd(',');
+            //species_count = species_count.TrimEnd(',');
+
 
             //now that the damage table for this stand has been recorded, clear it!!
             stand.ClearDamageTable();
@@ -296,9 +308,27 @@ namespace Landis.Extension.BaseHarvest
                 //damaged sites from this stand
                 //cohorts killed in this stand, by this harvest
             //and only record stands where a site has been damaged
-            log.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}",
-                          PlugIn.ModelCore.CurrentTime, mgmtArea.MapCode, stand.PrescriptionName, stand.MapCode, stand.EventId,
-                          stand.Age, stand.HarvestedRank, stand.SiteCount, damagedSites, cohortsDamaged, species_count);
+            //log.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}",
+            //              PlugIn.ModelCore.CurrentTime, mgmtArea.MapCode, stand.PrescriptionName, stand.MapCode, stand.EventId,
+            //              stand.Age, stand.HarvestedRank, stand.SiteCount, damagedSites, cohortsDamaged, species_count);
+
+            eventLog.Clear();
+            EventsLog el = new EventsLog();
+            el.Time = modelCore.CurrentTime;
+            el.ManagementArea = mgmtArea.MapCode;
+            el.Prescription = stand.PrescriptionName;
+            el.StandMapCode = stand.MapCode;
+            el.EventID = stand.EventId;
+            el.StandAge = stand.Age;
+            el.StandRank = stand.HarvestedRank;
+            el.StandSiteCount = stand.SiteCount;
+            el.HarvestedSites = damagedSites;
+            el.CohortsHarvestedComplete = cohortsDamaged;
+            el.CohortsHarvested_ = species_count;
+
+            eventLog.AddObject(el);
+            eventLog.WriteToFile();
+
 
 
         }
