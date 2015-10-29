@@ -200,9 +200,10 @@ namespace Landis.Extension.BaseHarvest
                 foreach (AppliedPrescription aprescription in mgmtArea.Prescriptions)
                 {
                     Prescription prescription = aprescription.Prescription;
-                    string species_string = "";
+                    //string species_string = "";
+                    double[] species_count = new double[modelCore.Species.Count];
                     foreach (ISpecies species in PlugIn.ModelCore.Species)
-                        species_string += ", " + totalSpeciesCohorts[prescription.Number, species.Index];
+                        species_count[species.Index] += totalSpeciesCohorts[prescription.Number, species.Index];
 
                     if (totalSites[prescription.Number] > 0 && prescriptionReported[prescription.Number] != true)
                     {
@@ -218,7 +219,7 @@ namespace Landis.Extension.BaseHarvest
                         sl.ManagementArea = mgmtArea.MapCode;
                         sl.Prescription = prescription.Name;
                         sl.TotalHarvestedSites = totalDamagedSites[prescription.Number];
-                        sl.CohortsHarvested_ = species_string;
+                        sl.CohortsHarvested_ = species_count;
                         summaryLog.AddObject(sl);
                         summaryLog.WriteToFile();
                         
