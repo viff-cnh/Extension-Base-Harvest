@@ -88,6 +88,9 @@ namespace Landis.Extension.BaseHarvest
         {
             //initialize event id
             event_id = 1;
+
+            PlugIn.eventLog = new MetadataTable<EventsLog>(parameters.EventLog);
+            PlugIn.summaryLog = new MetadataTable<SummaryLog>(parameters.SummaryLog);
             MetadataHandler.InitializeMetadata(parameters.Timestep, parameters.PrescriptionMapNames, modelCore);
             Timestep = parameters.Timestep;
             managementAreas = parameters.ManagementAreas;
@@ -108,8 +111,10 @@ namespace Landis.Extension.BaseHarvest
 
             prescriptionMaps = new PrescriptionMaps(parameters.PrescriptionMapNames);
 
+
+
             //open log file and write header
-            //PlugIn.ModelCore.UI.WriteLine("   Opening harvest log file \"{0}\" ...", parameters.EventLog);
+            PlugIn.ModelCore.UI.WriteLine("   Opening harvest log file \"{0}\" ...", parameters.EventLog);
 
             //try {
             //    log = Landis.Data.CreateTextFile(parameters.EventLog);
@@ -119,7 +124,7 @@ namespace Landis.Extension.BaseHarvest
             //    throw new System.ApplicationException(mesg);
             //}
             //log.AutoFlush = true;
-            
+
             //include a column for each species in the species dictionary
             //string species_header_names = "";
             //int i = 0;

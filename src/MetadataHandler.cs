@@ -35,9 +35,6 @@ namespace Landis.Extension.BaseHarvest
             //          table outputs:   
             //---------------------------------------
 
-            PlugIn.eventLog = new MetadataTable<EventsLog>("harvest-events-log.csv");
-            PlugIn.summaryLog = new MetadataTable<SummaryLog>("harvest-summary-log.csv");
-
             PlugIn.ModelCore.UI.WriteLine("   Generating event table...");
             OutputMetadata tblOut_events = new OutputMetadata()
             {
