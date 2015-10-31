@@ -89,9 +89,7 @@ namespace Landis.Extension.BaseHarvest
             //initialize event id
             event_id = 1;
 
-            PlugIn.eventLog = new MetadataTable<EventsLog>(parameters.EventLog);
-            PlugIn.summaryLog = new MetadataTable<SummaryLog>(parameters.SummaryLog);
-            MetadataHandler.InitializeMetadata(parameters.Timestep, parameters.PrescriptionMapNames, modelCore);
+            MetadataHandler.InitializeMetadata(parameters.Timestep, parameters.PrescriptionMapNames, parameters.EventLog, parameters.SummaryLog);
             Timestep = parameters.Timestep;
             managementAreas = parameters.ManagementAreas;
             PlugIn.ModelCore.UI.WriteLine("   Reading management-area map {0} ...", parameters.ManagementAreaMap);
@@ -114,7 +112,7 @@ namespace Landis.Extension.BaseHarvest
 
 
             //open log file and write header
-            PlugIn.ModelCore.UI.WriteLine("   Opening harvest log file \"{0}\" ...", parameters.EventLog);
+            //PlugIn.ModelCore.UI.WriteLine("   Opening harvest log file \"{0}\" ...", parameters.EventLog);
 
             //try {
             //    log = Landis.Data.CreateTextFile(parameters.EventLog);

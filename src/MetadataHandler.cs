@@ -14,7 +14,7 @@ namespace Landis.Extension.BaseHarvest
         
         public static ExtensionMetadata Extension {get; set;}
 
-        public static void InitializeMetadata(int Timestep, string MapFileName, /*string HarvestMapName,*/ ICore mCore)
+        public static void InitializeMetadata(int Timestep, string MapFileName, /*string HarvestMapName, ICore mCore*/, string eventLogName, string summaryLogName)
         {
 
             ScenarioReplicationMetadata scenRep = new ScenarioReplicationMetadata() {
@@ -34,6 +34,9 @@ namespace Landis.Extension.BaseHarvest
             //---------------------------------------
             //          table outputs:   
             //---------------------------------------
+
+            PlugIn.eventLog = new MetadataTable<EventsLog>(eventLogName);
+            PlugIn.summaryLog = new MetadataTable<SummaryLog>(summaryLogName);
 
             PlugIn.ModelCore.UI.WriteLine("   Generating event table...");
             OutputMetadata tblOut_events = new OutputMetadata()
