@@ -14,7 +14,7 @@ namespace Landis.Extension.BaseHarvest
         
         public static ExtensionMetadata Extension {get; set;}
 
-        public static void InitializeMetadata(int Timestep, string MapFileName, /*string HarvestMapName, ICore mCore*/, string eventLogName, string summaryLogName)
+        public static void InitializeMetadata(int Timestep, string MapFileName, /*string HarvestMapName, ICore mCore,*/ string eventLogName, string summaryLogName)
         {
 
             ScenarioReplicationMetadata scenRep = new ScenarioReplicationMetadata() {
