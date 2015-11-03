@@ -6,6 +6,8 @@ using System.Text;
 using Landis.Library.Metadata;
 using Landis.Core;
 using Edu.Wisc.Forest.Flel.Util;
+using System.IO;
+using Flel = Edu.Wisc.Forest.Flel;
 
 namespace Landis.Extension.BaseHarvest
 {
@@ -35,8 +37,12 @@ namespace Landis.Extension.BaseHarvest
             //          table outputs:   
             //---------------------------------------
 
+            CreateDirectory(eventLogName);
+            CreateDirectory(summaryLogName);
             PlugIn.eventLog = new MetadataTable<EventsLog>(eventLogName);
             PlugIn.summaryLog = new MetadataTable<SummaryLog>(summaryLogName);
+            //PlugIn.eventLog = new MetadataTable<EventsLog>("Harvest-event-log.csv");
+            //PlugIn.summaryLog = new MetadataTable<SummaryLog>("Harvest-summary-log.csv");
 
             PlugIn.ModelCore.UI.WriteLine("   Generating event table...");
             OutputMetadata tblOut_events = new OutputMetadata()
@@ -94,6 +100,22 @@ namespace Landis.Extension.BaseHarvest
 
 
 
+        }
+        public static void CreateDirectory(string path)
+        {
+            //Require.ArgumentNotNull(path);
+            path = path.Trim(null);
+            if (path.Length == 0)
+                throw new ArgumentException("path is empty or just whitespace");
+
+            string dir = Path.GetDirectoryName(path);
+            if (!string.IsNullOrEmpty(dir))
+            {
+                Flel.Util.Directory.EnsureExists(dir);
+            }
+
+            //return new StreamWriter(path);
+            return;
         }
     }
 }
