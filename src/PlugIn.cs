@@ -306,5 +306,11 @@ namespace Landis.Extension.BaseHarvest
         //public void Mark(ManagementArea mgmtArea, Stand stand) {
         //} //
 
+        public override void CleanUp()
+        {
+            //Landis.Library.HarvestManagement.Main
+            Landis.Library.SiteHarvest.Main.ResetLib();
+        }
+
     }
 }
