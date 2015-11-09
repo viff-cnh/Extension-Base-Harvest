@@ -20,8 +20,8 @@ namespace Landis.Extension.BaseHarvest
         [DataFieldAttribute(Desc = "Prescription Name")]
         public string Prescription { set; get; }
 
-        [DataFieldAttribute(Desc = "Stand Map Code")]
-        public uint StandMapCode { set; get; }
+        [DataFieldAttribute(Desc = "Stand")]
+        public uint Stand { set; get; }
 
         [DataFieldAttribute(Desc = "Event ID")]
         public int EventID { set; get; }
@@ -32,8 +32,8 @@ namespace Landis.Extension.BaseHarvest
         [DataFieldAttribute(Desc = "Stand Rank", Format = "0.0")]
         public double StandRank { set; get; }
 
-        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Stand Site Count")]
-        public int StandSiteCount { set; get; }
+        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Number of Sites")]
+        public int NumberOfSites { set; get; }
 
         [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Number of Sites Harvested")]
         public int HarvestedSites { set; get; }
@@ -47,11 +47,11 @@ namespace Landis.Extension.BaseHarvest
         //[DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Number of Cohorts Partially Harvested")]
         //public int CohortsHarvestedPartial { set; get; }
 
-        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Number of Cohorts Completely Harvested")]
-        public int CohortsHarvestedComplete { set; get; }
+        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Cohorts Killed")]
+        public int CohortsKilled { set; get; }
 
-        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Species Cohorts Harvested by Species", SppList = true)]
-        public double[] CohortsHarvested_ { set; get; }
+        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Species Cohorts Killed by Species", SppList = true)]
+        public double[] CohortsKilled_ { set; get; }
 
  
     }

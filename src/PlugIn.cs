@@ -221,8 +221,8 @@ namespace Landis.Extension.BaseHarvest
                         sl.Time = modelCore.CurrentTime;
                         sl.ManagementArea = mgmtArea.MapCode;
                         sl.Prescription = prescription.Name;
-                        sl.TotalHarvestedSites = totalDamagedSites[prescription.Number];
-                        sl.CohortsHarvested_ = species_count;
+                        sl.HarvestedSites = totalDamagedSites[prescription.Number];
+                        sl.CohortsKilled_ = species_count;
                         summaryLog.AddObject(sl);
                         summaryLog.WriteToFile();
                         
@@ -322,14 +322,14 @@ namespace Landis.Extension.BaseHarvest
             el.Time = modelCore.CurrentTime;
             el.ManagementArea = mgmtArea.MapCode;
             el.Prescription = stand.PrescriptionName;
-            el.StandMapCode = stand.MapCode;
+            el.Stand = stand.MapCode;
             el.EventID = stand.EventId;
             el.StandAge = stand.Age;
             el.StandRank = stand.HarvestedRank;
-            el.StandSiteCount = stand.SiteCount;
+            el.NumberOfSites = stand.SiteCount;
             el.HarvestedSites = damagedSites;
-            el.CohortsHarvestedComplete = cohortsDamaged;
-            el.CohortsHarvested_ = species_count;
+            el.CohortsKilled = cohortsDamaged;
+            el.CohortsKilled_ = species_count;
 
             eventLog.AddObject(el);
             eventLog.WriteToFile();

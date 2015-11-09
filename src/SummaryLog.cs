@@ -18,8 +18,8 @@ namespace Landis.Extension.BaseHarvest
         [DataFieldAttribute(Desc = "Prescription Name")]
         public string Prescription { set; get; }
 
-        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Total Harvested Sites")]
-        public int TotalHarvestedSites { set; get; }
+        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Harvested Sites")]
+        public int HarvestedSites { set; get; }
 
         //[DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Total Cohorts Complete Harvest")]
         //public int TotalCohortsCompleteHarvest { set; get; }
@@ -27,8 +27,8 @@ namespace Landis.Extension.BaseHarvest
         //[DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Total Cohorts Partial Harvest")]
         //public int TotalCohortsPartialHarvest { set; get; }
 
-        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Species Cohorts Harvested by Species", SppList = true)]
-        public double[] CohortsHarvested_ { set; get; }
+        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Species Cohorts Killed by Species", SppList = true)]
+        public double[] CohortsKilled_ { set; get; }
 
 
     }
