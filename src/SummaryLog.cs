@@ -27,8 +27,8 @@ namespace Landis.Extension.BaseHarvest
         //[DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Total Cohorts Partial Harvest")]
         //public int TotalCohortsPartialHarvest { set; get; }
 
-        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Species Cohorts Killed by Species", SppList = true)]
-        public double[] CohortsKilled_ { set; get; }
+        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Number of Cohorts Harvested by Species", SppList = true)]
+        public double[] CohortsHarvested_ { set; get; }
 
 
     }

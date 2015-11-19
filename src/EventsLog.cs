@@ -29,8 +29,8 @@ namespace Landis.Extension.BaseHarvest
         [DataFieldAttribute(Unit = FieldUnits.Year, Desc = "Stand Age")]
         public int StandAge { set; get; }
 
-        [DataFieldAttribute(Desc = "Stand Rank", Format = "0.0")]
-        public double StandRank { set; get; }
+        [DataFieldAttribute(Desc = "Stand Rank")]
+        public int StandRank { set; get; }
 
         [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Number of Sites")]
         public int NumberOfSites { set; get; }
@@ -47,11 +47,11 @@ namespace Landis.Extension.BaseHarvest
         //[DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Number of Cohorts Partially Harvested")]
         //public int CohortsHarvestedPartial { set; get; }
 
-        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Cohorts Killed")]
-        public int CohortsKilled { set; get; }
+        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Total Number Cohorts Harvested")]
+        public int TotalCohortsHarvested { set; get; }
 
-        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Species Cohorts Killed by Species", SppList = true)]
-        public double[] CohortsKilled_ { set; get; }
+        [DataFieldAttribute(Unit = FieldUnits.Count, Desc = "Species Cohorts Harvested by Species", SppList = true)]
+        public double[] CohortsHarvested_ { set; get; }
 
  
     }
