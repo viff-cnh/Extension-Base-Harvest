@@ -222,7 +222,7 @@ namespace Landis.Extension.BaseHarvest
                         sl.ManagementArea = mgmtArea.MapCode;
                         sl.Prescription = prescription.Name;
                         sl.HarvestedSites = totalDamagedSites[prescription.Number];
-                        sl.CohortsKilled_ = species_count;
+                        sl.CohortsHarvested_ = species_count;
                         summaryLog.AddObject(sl);
                         summaryLog.WriteToFile();
                         
@@ -325,11 +325,11 @@ namespace Landis.Extension.BaseHarvest
             el.Stand = stand.MapCode;
             el.EventID = stand.EventId;
             el.StandAge = stand.Age;
-            el.StandRank = stand.HarvestedRank;
+            el.StandRank = Convert.ToInt32(stand.HarvestedRank);
             el.NumberOfSites = stand.SiteCount;
             el.HarvestedSites = damagedSites;
-            el.CohortsKilled = cohortsDamaged;
-            el.CohortsKilled_ = species_count;
+            el.TotalCohortsHarvested = cohortsDamaged;
+            el.CohortsHarvested_ = species_count;
 
             eventLog.AddObject(el);
             eventLog.WriteToFile();
