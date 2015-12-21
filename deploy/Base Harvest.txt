@@ -1,7 +1,7 @@
 LandisData   Extension
 
 Name         "Base Harvest"
-Version      "3.1  (release candidate 1)"
+Version      "3.1  (release candidate 2)"
 Type         disturbance:harvest
 Assembly     Landis.Extension.BaseHarvest-3.0
 Class        Landis.Extension.BaseHarvest.PlugIn
