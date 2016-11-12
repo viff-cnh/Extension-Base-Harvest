@@ -1,14 +1,11 @@
-Prerequisite for Building
--------------------------
-
-This project requires the LANDIS-II SDK be installed in order to build
-and stage the extension's assembly into the LANDIS-II directory structure.
-Release 04 or a later release of SDK version 6.0 is needed.
-
 Configuring Project
 -------------------
 
-This project needs to be configured prior to building it.  Configuration
-requires the LANDIS-II SDK.  To configure the project, run the command
-script called "src\config.cmd".  It stages a copy of the Harvest library
-that's used by this extension into the LANDIS-II build directory.
+When opening the Visual Studio Solution, check Project->Properties->Reference Paths
+for a reference path "...Extension-Base-Harvest\src\libs". If it is not there, add the
+path to ensure the Solution builds correctly.
+
+Visual Studio will mark references to the DLLs as unresolved until the solution is rebuilt
+- when it is built, it will automatically download the required DLLs and put them in the
+correct folder for you. To download the latest versions of the DLLs, simply delete the
+files found in src/libs/ and then rebuild the Visual Studio solution.
