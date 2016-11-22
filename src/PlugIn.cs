@@ -1,5 +1,3 @@
-// This file is part of the Base Harvest extension for LANDIS-II.
-
 using Edu.Wisc.Forest.Flel.Util;
 using Landis.Core;
 using Landis.Library.HarvestManagement;
