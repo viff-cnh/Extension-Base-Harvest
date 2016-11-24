@@ -91,7 +91,7 @@ The following references 1) commands within a Windows/Git command-line interface
 
 	a. Clone the Extension-Base-Harvest repo to your machine to create a LOCAL repo 
 
-$ git clone https://github.com/bmarron18/Extension-Base-Harvest.git
+$ git clone https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest.git
 Cloning into 'Extension-Base-Harvest'...
 remote: Counting objects: 429, done.
 remote: Compressing objects: 100% (17/17), done.
