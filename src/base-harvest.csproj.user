@@ -3,6 +3,7 @@
   <PropertyGroup>
   </PropertyGroup>
   <PropertyGroup>
-    <ReferencePath>C:\Users\bmarr\Desktop\BaseHarvest_testRepo\Extension-Base-Harvest\src\libs\</ReferencePath>
+    <ReferencePath>
+    </ReferencePath>
   </PropertyGroup>
 </Project>
