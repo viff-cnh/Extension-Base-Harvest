@@ -2,8 +2,5 @@ The Base Harvest extension simulates logging and other forest management activit
 
 Changes to this extension are governed by the [**Repository Rules**](https://sites.google.com/site/landismodel/developers/developers-blog/repositoryrulesfromthetechnicaladvisorycommittee) from the Technical Advisory Committee.
 
-Eric Gustafson is the custodian of this extension.
-
-* [Roadmap](../../wiki/RoadMap)
 
 
