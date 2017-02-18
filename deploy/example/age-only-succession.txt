@@ -8,7 +8,7 @@ SeedingAlgorithm  WardSeedDispersal
 InitialCommunities      "./initial-communities.txt"
 InitialCommunitiesMap   "./initial-communities.gis"
 
-DynamicInputFile	age-only-succession-dynamic-inputs.txt
+DynamicInputFile	age-only-succession_DynamicInput.txt
 
 
 >>EstablishProbabilities
