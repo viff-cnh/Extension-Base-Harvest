@@ -8,8 +8,8 @@
     <ProjectGuid>{744C34C9-C233-4EAA-96A7-AA4E12149086}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>base_harvest</RootNamespace>
-    <AssemblyName>Landis.Extension.BaseHarvest-3.0</AssemblyName>
+    <RootNamespace>>Landis.Extension.BaseHarvest</RootNamespace>
+    <AssemblyName>Landis.Extension.BaseHarvest</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
