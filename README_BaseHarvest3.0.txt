@@ -1,10 +1,10 @@
-Title:			README_BHv1.1 -- Repository Info
+Title:			README_BaseHarvest3.0 -- Extension and Repository Info
 Project:		LANDIS-II Landscape Change Model
 Project Component:	Extension-Base-Harvest Repository
 Component Deposition:	https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest
 Author:			LANDIS-II Foundation
 Origin Date:		24 Nov 2016
-Revision Date:		14 Jan 2017
+Final Date:		17 Feb 2017
 
 
 Welcome to the source code repository for Extension-Base-Harvest, a LANDIS-II extension. 
@@ -70,8 +70,8 @@ The process looks like this:
 
 
 ##########################################################
-Building a new or modified extension from source code:
-NBs
+Preliminary notes for building 
+a new or modified extension from source code
 ##########################################################
 
 NB. It is recommended that you use Git for version control and change tracking.
@@ -104,16 +104,18 @@ Assembly System.Core
 
 
 ##########################################################
-Building a new or modified extension from source code:
-Step-by-step
+Step-by-step instructions for building 
+a new or modified extension from source code
 ##########################################################
 
-The following steps use both commands and window-driven options. The commands are Git 
-commands which are available within a Git command-line interface (GitBASH for Windows). 
-The menu-driven options are those available in Visual Studio (VS).
+The following steps use both a Git command-line interface (GitBASH for Windows; see above) and  
+the menu-driven options available in Visual Studio (VS). 
 
-The example given below is a specific one using "Extension-Base-Harvest". The repo for this
+The example given below is a specific one and uses the extension, "Extension-Base-Harvest". The repo for this
 extension is available at https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest.
+
+
+Substitute, as appropriate, for your extension of interest.
 
 ===== STEP1. Clone and .git track a local version of an extension repository ================
 
@@ -133,11 +135,8 @@ Resolving deltas: 100% (263/263), done.
 
 ==== STEP2. Setup Visual Studio (VS)  ==================================================
 
-	a. Open VS and load the "<name>.csproj" file
+	a. Open VS and load the "base-harvest.csproj" file
 Project ==> Open ==> Project/Solution
-
-
-
 
 
 
@@ -152,6 +151,8 @@ Solution 'base harvest' (1 project)
     packages.config
     PlugIn.cs
     SummaryLog.cs
+
+
 
 	c. VS has added three (3) directories to your LOCAL repo:
 
@@ -172,7 +173,6 @@ C:\Users\...\Extension-Base-Harvest\src\base-harvest.sln
 
 	a. Under the "Build" tab, select "Build base-harvest"
 
-
 	b. If the VS build is successful, two new files will have been created:
 
 Landis.Extension.BaseHarvest-3.0.dll	#the functional extension to be used by the LANDIS-II
@@ -183,28 +183,31 @@ Landis.Extension.BaseHarvest-3.0.pdb	#a program database(.pdb) file for storing 
 					during compilation and not needed by LANDIS-II
 
 
-	b1. Note that ... \Extension-Base-Harvest\src\obj\Debug has a text file listing the 
+	b1. Note that "... \Extension-Base-Harvest\src\obj\Debug" has a text file listing the 
 files created by the (re)build (see <name>.csproj.FileListAbsolute.txt)
 
 
-	b2.  Note that ... \Extension-Base-Harvest\src\bin\Debug is now populated with various 
+	b2.  Note that "... \Extension-Base-Harvest\src\bin\Debug" is now populated with various 
 reference libraries required for the (re)build. A copy of the newly built, 
 "Landis.Extension.BaseHarvest-3.0.dll" library is also found here.
 
 
 
-#################################
+
+####################################################
 Testing the (re)built extension
-##################################
+(ie, "Landis.Extension.BaseHarvest-3.0.dll")
+#####################################################
 
-==== STEP1. Switch out extensions =============================================== 
+==== STEP1. remove the currently installed BaseHarvest extension and re-install =============================================== 
 
-	a. Remove the OLD "Landis.Extension.BaseHarvest-3.0.dll" from the directory,
-	   C:\Program Files\LANDIS-II\v6\bin\extensions\
+	a. Use the Windows 'Control Panel' to uninstall the current version of LANDIS-II Base Harvest
+ 
+	b. Open 'Base Harvest v3.0.iss' in Inno Script Studio (https://www.kymoto.org/products/inno-script-studio)
 
-	b. Add the NEW, (re)built "Landis.Extension.BaseHarvest-3.0.dll" to the 
-	   directory, C:\Program Files\LANDIS-II\v6\bin\extensions\
+	c. Compile (CTRL-F9) 'Base Harvest v3.0.iss' to produce an installer, 'LANDIS-II Base Harvest 3.0-setup.exe'
 
+	d. Run the new installer 
 
 
 ===== STEP2. Perform a test run ===========================================================
@@ -213,8 +216,7 @@ Testing the (re)built extension
 	   extension
 
 	a1. Note that the Base Harvest example is installed along with Base Harvest extension 
-	    which is available from the LANDIS-II Foundation website 
-	    (http://www.landis-ii.org/extensions)
+
 
 C:\Program Files\LANDIS-II\v6\examples\Base Harvest>call landis-ii scenario.txt
 LANDIS-II 6.2 (beta release 1)
