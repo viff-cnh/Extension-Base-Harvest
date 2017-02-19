@@ -24,7 +24,7 @@ Prescription    MyClearcut
     HarvestImplementations
 >>  Mgmt Area   Prescription    Harvest Area    Begin Time  End Time
 >>  ---------   ------------    ------------    ----------  --------
-	1	MyClearcut	10%Stands	 0		50
+	1	MyClearcut	10%		 0		50
 >>-----------------------------------------------------------------
 >> OUTPUTS
 

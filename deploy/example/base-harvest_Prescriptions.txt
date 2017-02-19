@@ -45,15 +45,15 @@ Prescription SelectiveNorthernHardwood
 
 Prescription    OakPatchCutting
     StandRanking	MaxCohortAge
-    MinimumAge  	60
-    StandAdjacency	10
-    AdjacencyType 	StandAge
-    AdjacencyNeighborSetAside   10
-    ForestTypeTable
+>>    MinimumAge  	20
+>>    StandAdjacency	10
+>>    AdjacencyType 	StandAge
+>>    AdjacencyNeighborSetAside   10
+>>    ForestTypeTable
      >> InclusionRule   ageRange    %Cells	species
      >>--------------------------------------------------------
-	Forbidden			1-131	    60     	tsugcana
-	Required    	    100-450     20     	querrubr 
+>>	Forbidden	1-131	    60     	tsugcana
+>>	Required    	100-450     20     	querrubr 
 	
     SiteSelection	PatchCutting	75%	50
     CohortsRemoved	SpeciesList
@@ -69,11 +69,11 @@ Prescription    OakPatchCutting
     HarvestImplementations
 >>  Mgmt Area   Prescription    Harvest Area    Begin Time  End Time
 >>  ---------   ------------    ------------    ----------  --------
->>	1	MaxAgeClearcut	5%	    	0		25
->>	1	MaxAgeClearcut	10%		30		50
-	1	AspenClearcut	5%Stands
->>	2	SelectiveNorthernHardwood	10%	10	25
->>	2	AspenClearcut	10%
+	1	MaxAgeClearcut	5%	    	0		45
+	1	MaxAgeClearcut	10%		50		100
+	3	AspenClearcut	5%
+	3	SelectiveNorthernHardwood	10%	20	75
+	2	OakPatchCutting	30%
 	
 >>-----------------------------------------------------------------
 >> OUTPUTS
