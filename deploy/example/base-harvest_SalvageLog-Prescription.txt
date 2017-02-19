@@ -19,12 +19,12 @@ Stands     		"./stand.gis"
 
 
 >> -----------------------------------------
->> PRESCRIPTIONS
+>> HARVEST PRESCRIPTIONS
 >> -----------------------------------------
 
 Prescription	SalvageLogger1
     StandRanking		TimeSinceDisturbance 
-    TimeSinceLastFire		80
+    TimeSinceLastFire		90
     SiteSelection    		Complete
     CohortsRemoved   		ClearCut    
 
@@ -41,10 +41,10 @@ Prescription	SalvageLogger2
 >> ----------------------------------------
 
     HarvestImplementations
->>  Mgmt Area   Prescription    Harvest Area    Begin Time  End Time
->>  ---------   ------------    ------------    ----------  --------
-	1	SalvageLogger1	50%
-	3	SalvageLogger2	50%
+>>	Mgmt Area	Prescription	Harvest Area	BeginTime	EndTime
+>>	---------	------------	------------	----------	--------
+	1		SalvageLogger1		50%
+	3		SalvageLogger2		50%
 
 
 

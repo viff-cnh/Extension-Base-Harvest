@@ -60,9 +60,9 @@ CellLength  100 << meters, 100 x 100 m = 1 ha
 >>	"Base Fire"		base-fire_Input.txt
 >>	"Base BDA"		base-BDA_Input.txt
 
->>	"Base Harvest"		base-harvest_Prescriptions.txt
+	"Base Harvest"		base-harvest_Prescriptions.txt
 >>	"Base Harvest"		base-harvest_BDA-Prescription.txt
-	"Base Harvest"		base-harvest_SalvageLog-Prescription.txt
+>>	"Base Harvest"		base-harvest_SalvageLog-Prescription.txt
 
 
 
