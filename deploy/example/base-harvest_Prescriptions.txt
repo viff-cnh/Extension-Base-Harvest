@@ -4,11 +4,13 @@ LandisData  "Base Harvest"
 Timestep    10
 
 ManagementAreas "./management.gis"
-
 Stands      "./stand.gis"
 
->> -----------------------------------------
->> PRESCRIPTIONS
+
+
+>> -------------------------
+>> HARVEST PRESCRIPTIONS
+>> -------------------------
 
 Prescription MaxAgeClearcut
     StandRanking 	MaxCohortAge
@@ -63,8 +65,11 @@ Prescription    OakPatchCutting
 	querrubr AllExceptOldest
 	pinubank All
 
->>-----------------------------------------------------------------
+
+
+>> ----------------------------------
 >> PRESCRIPTION IMPLEMENTATION 
+>> ---------------------------------
 
     HarvestImplementations
 >>  Mgmt Area   Prescription    Harvest Area    Begin Time  End Time
@@ -74,10 +79,12 @@ Prescription    OakPatchCutting
 	3	AspenClearcut	5%
 	3	SelectiveNorthernHardwood	10%	20	75
 	2	OakPatchCutting	30%
-	
->>-----------------------------------------------------------------
->> OUTPUTS
 
+
+	
+>> ------------
+>> OUTPUTS
+>> ----------
 PrescriptionMaps    harvest/prescripts-{timestep}.img
-EventLog            harvest-event-test-log.csv
+EventLog            harvest/harvest-event-test-log.csv
 SummaryLog	    harvest/summary-log.csv

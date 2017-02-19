@@ -1,0 +1,57 @@
+LandisData  "Base Harvest"
+
+
+Timestep    10
+
+ManagementAreas 	"./management.gis"
+Stands     		"./stand.gis"
+
+
+>> ---------------------------
+>> STAND SELECTION CRITERION
+>> --------------------------
+>>	1) IF avgtime of fire in a stand >= TimeSinceLastFire
+>>	   THEN stand IS NOT selected	
+
+>>	2) IF avgtime of fire in a stand < TimeSinceLastFire
+>>	   THEN stand IS selected	
+
+
+
+>> -----------------------------------------
+>> PRESCRIPTIONS
+>> -----------------------------------------
+
+Prescription	SalvageLogger1
+    StandRanking		TimeSinceDisturbance 
+    TimeSinceLastFire		80
+    SiteSelection    		Complete
+    CohortsRemoved   		ClearCut    
+
+
+Prescription	SalvageLogger2
+    StandRanking		TimeSinceDisturbance 
+    TimeSinceLastFire		1
+    SiteSelection    		Complete
+    CohortsRemoved   		ClearCut  
+
+
+>> -----------------------------------------
+>> PRESCRIPTION IMPLEMENTATION 
+>> ----------------------------------------
+
+    HarvestImplementations
+>>  Mgmt Area   Prescription    Harvest Area    Begin Time  End Time
+>>  ---------   ------------    ------------    ----------  --------
+	1	SalvageLogger1	50%
+	3	SalvageLogger2	50%
+
+
+
+>> --------------
+>> OUTPUTS
+>> --------------
+
+PrescriptionMaps    harvest/prescripts-{timestep}.img
+EventLog            harvest/harvest-event-log.csv
+SummaryLog	    harvest/harvest-summary-log.csv
