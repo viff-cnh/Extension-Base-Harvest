@@ -19,8 +19,6 @@ namespace Landis.Extension.BaseHarvest
         private PrescriptionMaps prescriptionMaps;
         public static MetadataTable<EventsLog> eventLog;
         public static MetadataTable<SummaryLog> summaryLog;
-        //private StreamWriter log;
-        //private StreamWriter summaryLog;
         private static int event_id;
         private static double current_rank;     //need a global to keep track of the current stand's rank.  just for log file.
 
@@ -106,53 +104,13 @@ namespace Landis.Extension.BaseHarvest
                 mgmtArea.FinishInitialization();
 
             prescriptionMaps = new PrescriptionMaps(parameters.PrescriptionMapNames);
-
-
-
-            //open log file and write header
-            //PlugIn.ModelCore.UI.WriteLine("   Opening harvest log file \"{0}\" ...", parameters.EventLog);
-
-            //try {
-            //    log = Landis.Data.CreateTextFile(parameters.EventLog);
-            //}
-            //catch (Exception err) {
-            //    string mesg = string.Format("{0}", err.Message);
-            //    throw new System.ApplicationException(mesg);
-            //}
-            //log.AutoFlush = true;
-
-            //include a column for each species in the species dictionary
-            //string species_header_names = "";
-            //int i = 0;
-            //for (i = 0; i < PlugIn.ModelCore.Species.Count; i++) {
-            //    species_header_names += PlugIn.ModelCore.Species[i].Name + ",";
-            //}
-            ////Trim trailing comma so we don't add an extra column
-            //species_header_names = species_header_names.TrimEnd(',');
-
-            //log.WriteLine("Time,ManagementArea,Prescription,Stand,EventId,StandAge,StandRank,NumberOfSites,HarvestedSites,CohortsKilled,{0}", species_header_names);
-
-            //PlugIn.ModelCore.UI.WriteLine("   Opening summary harvest log file \"{0}\" ...", parameters.SummaryLog);
-
-            //try {
-            //    summaryLog = Landis.Data.CreateTextFile(parameters.SummaryLog);
-            //}
-            //catch (Exception err) {
-            //    string mesg = string.Format("{0}", err.Message);
-            //    throw new System.ApplicationException(mesg);
-            //}
-            //summaryLog.AutoFlush = true;
-
-            //summaryLog.WriteLine("Time,ManagementArea,Prescription,HarvestedSites,{0}", species_header_names);
-
-
         }
 
         //---------------------------------------------------------------------
 
         public override void Run()
         {
-            SiteVars.ReInitialize();
+            SiteVars.GetExternalVars(); // ReInitialize();
             SiteVars.Prescription.ActiveSiteValues = null;
             SiteVars.CohortsDamaged.ActiveSiteValues = 0;
 
