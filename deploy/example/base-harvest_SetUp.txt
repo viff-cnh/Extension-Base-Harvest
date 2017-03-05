@@ -3,21 +3,29 @@ LandisData  "Base Harvest"
 
 Timestep    10
 
-ManagementAreas 	"./management.gis"
-Stands     		 "./stand.gis"
 
+
+>>-------------------------
+>> HARVEST MAPS
+>>---------------------------
+
+ManagementAreas 	./base-harvest_Management.gis
+Stands     		./base-harvest_Stand.gis
 
 
 >> -------------------------
 >> HARVEST PRESCRIPTIONS
 >> -------------------------
 
+
+>>---- PRESCRIPTION_1 ---------------------------------------
 Prescription MaxAgeClearcut
     StandRanking 	MaxCohortAge
     SiteSelection 	Complete
     CohortsRemoved 	ClearCut
 
 
+>>---- PRESCRIPTION_2 ---------------------------------------
 Prescription    AspenClearcut
     StandRanking    Economic
 >> 	Species 	Economic Rank 	Minimum Age
@@ -28,7 +36,8 @@ Prescription    AspenClearcut
     SiteSelection	CompleteStandSpread 1 40
     CohortsRemoved	ClearCut
 
-    
+
+>>---- PRESCRIPTION_3 ---------------------------------------    
 Prescription SelectiveNorthernHardwood
     StandRanking    Economic
 >>	Species 	EconomicRank	 Minimum Age
@@ -48,19 +57,19 @@ Prescription SelectiveNorthernHardwood
 	betualle   	1/5
 	fraxamer   	1/2
 
-
+>>---- PRESCRIPTION_4 ---------------------------------------
 Prescription    OakPatchCutting
     StandRanking		MaxCohortAge
->>    MinimumAge  		20
->>    StandAdjacency		10
->>    AdjacencyType 		StandAge
->>    AdjacencyNeighborSetAside	10
+    MinimumAge  		20
+    StandAdjacency		10
+    AdjacencyType 		StandAge
+    AdjacencyNeighborSetAside	10
 
->>   ForestTypeTable
+   ForestTypeTable
 >>	InclusionRule	ageRange	%Cells	species
 >> 	-------------	--------	------	-------
->>	Forbidden	1-131		60	tsugcana
->>	Required	100-450		20	querrubr 
+	Forbidden	1-131		60	tsugcana
+	Required	100-450		20	querrubr 
 	
     SiteSelection	PatchCutting	75%	50
 
@@ -74,7 +83,7 @@ Prescription    OakPatchCutting
 
 
 >> ----------------------------------
->> PRESCRIPTION IMPLEMENTATION 
+>> HARVEST IMPLEMENTATION 
 >> ---------------------------------
 
     HarvestImplementations
@@ -92,6 +101,8 @@ Prescription    OakPatchCutting
 >> OUTPUTS
 >> ----------
 
-PrescriptionMaps    harvest/prescripts-{timestep}.img
-EventLog            harvest/harvest-event-test-log.csv
-SummaryLog	    harvest/summary-log.csv
+PrescriptionMaps    harvest/base-harvest-prescripts-{timestep}.img
+EventLog            harvest/base-harvest-event-log.csv
+SummaryLog	    harvest/base-harvest-summary-log.csv
+
+
