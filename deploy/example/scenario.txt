@@ -1,8 +1,8 @@
-LandisData  Scenario
+LandisData  "Scenario"
 
 Duration  100
 
-Species   species.txt
+Species   	./species.txt
 
 Ecoregions      ./ecoregions.txt
 EcoregionsMap   ./ecoregions.gis
@@ -10,36 +10,15 @@ EcoregionsMap   ./ecoregions.gis
 CellLength  100 << meters, 100 x 100 m = 1 ha
 
 
->> ---------------------
->> LANDISII RUN OPTIONS
->>-----------------------
+>> ---------------------------------------------
+>> SCENARIO OPTIONS FOR A SINGLE LANDISII RUN
+>>----------------------------------------------
 
->> Options for LANDISII runs are:
->>	1) "Base Fire"		base-fire_Input.txt 
->>	2) "Base Harvest" 	base-harvest_Prescriptions.txt
->>	3) "Base Fire"		base-fire_Input.txt 
->>	   "Base Harvest" 	base-harvest_Prescriptions.txt
+>>	1. Sekect ONE Succession Extension
+>>	2. Select ONE OR MORE Disturbance Extensions (but only ONE harvest extension)
+>>	3. Select ONE OR MORE (compatible) Other Extensions
 
->>	4) "Base BDA"		base-BDA_Input.txt
->>	5) "Base Harvest"	base-harvest_BDA-Prescription.txt
->>	6) "Base BDA"		base-BDA_Input.txt
->>	   "Base Harvest"	base-harvest_BDA-Prescription.txt
-
->>	7) "Base Fire"		base-fire_Input.txt 
->>	   "Base BDA"		base-BDA_Input.txt
->>	   "Base Harvest"	base-harvest_BDA-Prescription.txt
-
->>	8) "Base Fire"		base-fire_Input.txt 
->>	   "Base BDA"		base-BDA_Input.txt
->>	   "Base Harvest"	base-harvest_Prescriptions.txt
-
->>	9) "Base Fire"		base-fire_Input.txt 
->>	   "Base Harvest"	base-harvest_SalvageLog-Prescription.txt
-
->>	10) "Base Fire"		base-fire_Input.txt 
->>	    "Base BDA"		base-BDA_Input.txt
->>	    "Base Harvest"	base-harvest_SalvageLog-Prescription.txt
-
+>>	Selection is made by uncommenting a line (ie, remove the >> symbols) 
 
 
 >> -----------------------
@@ -48,7 +27,8 @@ CellLength  100 << meters, 100 x 100 m = 1 ha
 
 >> 	Succession Extension     Initialization File
 >> 	--------------------     -------------------
-   	"Age-only Succession"    age-only-succession.txt
+>>   	"Age-only Succession"	age-only-succession_SetUp.txt
+	"Biomass Succession"	biomass-succession_SetUp.txt
 
 
 >> --------------------------
@@ -57,19 +37,25 @@ CellLength  100 << meters, 100 x 100 m = 1 ha
 
 >> 	Disturbance Extension	Initialization File
 >>	--------------------	-------------------
->>	"Base Fire"		base-fire_Input.txt
->>	"Base BDA"		base-BDA_Input.txt
-
-	"Base Harvest"		base-harvest_Prescriptions.txt
->>	"Base Harvest"		base-harvest_BDA-Prescription.txt
->>	"Base Harvest"		base-harvest_SalvageLog-Prescription.txt
+	"Base Harvest"		base-harvest_SetUp.txt
+>>	"Base BDA"		base-BDA_SetUp.txt
+>>	"Base Fire"		base-fire_SetUp.txt
 
 
+>>   DisturbancesRandomOrder  yes  	<< optional
+                         		<< Commented (default) is "no"
 
 >> ------------------------
 >> OTHER EXTENSONS
 >> ----------------------
 
->> 	Other Extension		Initialization File
->> 	----------------	-------------------
+>> 	Other Extension			Initialization File
+>> 	----------------		-------------------
+   	"Output Biomass"		output_Biomass.txt		<<compatible w/ "Biomass Succession" only
+  	"Output Biomass Reclass"    	output_BiomassReclass.txt	<<compatible w/ "Biomass Succession" only
+
+
+>> RandomNumberSeed  147  << optional parameter; uncomment for reproducibilty tests
+                          << Commented (default) is a RandomNumberSeed generated using the current time
+
 

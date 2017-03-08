@@ -1,10 +1,10 @@
-Title:			README_BaseHarvest3.0 -- Extension and Repository Info
+Title:			README_BaseHarvest3.0
 Project:		LANDIS-II Landscape Change Model
-Project Component:	Extension-Base-Harvest Repository
+Project Component:	Extension-Base-Harvest
 Component Deposition:	https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest
 Author:			LANDIS-II Foundation
 Origin Date:		24 Nov 2016
-Final Date:		17 Feb 2017
+Final Date:		04 Mar 2017
 
 
 Welcome to the source code repository for Extension-Base-Harvest, a LANDIS-II extension. 

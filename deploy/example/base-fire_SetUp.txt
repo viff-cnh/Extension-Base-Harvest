@@ -4,6 +4,7 @@ Timestep  5
 
 
 
+
 >> ---------------
 >> FIRE REGIONS
 >> ---------------
@@ -14,18 +15,25 @@ Timestep  5
     eco1       1	 100    4     400    0.001    100
     eco2       2	 200    6     600    0.001     50
 
-InitialFireRegionsMap	"./ecoregions.gis"
+>>----------------------
+>> FIRE REGIONS MAP
+>>----------------------
+
+InitialFireRegionsMap	./ecoregions.gis
+
+
 
 >> ---------------
 >> FIRE TABLES
 >> ---------------
 
-DynamicFireRegionTable  << Optional table
->>Year	FileName  (this line always commented out)
-  20	ecoregions.gis  << If table is not active, comment out this line
+>>  DynamicFireRegionTable		<< Optional (uncomment to select) 
+>> Year		FileName
+>> ----		--------
+>>   20		ecoregions.gis		<< Optional (uncomment to select)
 
 
-FuelCurveTable
+  FuelCurveTable
 >>             Severities (in increasing order)
 >> Ecoregion   S1   S2   S3   S4   S5
 >> ------------------------------------
@@ -34,7 +42,7 @@ FuelCurveTable
 
 
 
-WindCurveTable
+  WindCurveTable
 >>             Severities (in decreasing order)
 >> Ecoregion   S5   S4   S3   S2   S1
 >> ------------------------------------
@@ -43,7 +51,7 @@ WindCurveTable
 
 
 
-FireDamageTable
+  FireDamageTable
 >> Cohort Age       FireSeverity - 
 >> % of longevity   FireTolerance
 >> --------------   --------------
@@ -57,6 +65,11 @@ FireDamageTable
 >> ---------------
 >> OUTPUTS
 >> -------------
-MapNames	fire/severity-{timestep}.img
-LogFile		fire/fire-log.csv
-SummaryLogFile	fire/summary-log.csv
+MapNames	fire/base-fire-severity-{timestep}.img
+LogFile		fire/base-fire-log.csv
+SummaryLogFile 	fire/base-fire-summary-log.csv
+
+
+
+
+SummaryLogFile	fire/base-fire-summary-log.csv
