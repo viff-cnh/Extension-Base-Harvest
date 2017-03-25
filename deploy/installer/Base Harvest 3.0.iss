@@ -29,7 +29,7 @@ Source: ..\..\src\bin\Debug\Landis.Library.Metadata.dll;       DestDir: {#ExtDir
 ;Source: ..\documentation\LANDIS-II Base Harvest v3.0 User Guide.pdf; DestDir: {#AppDir}\docs
 
 
-; Complete example for testing
+; Complete example for testing the extension
 Source: ..\example\*.txt; DestDir: {#AppDir}\examples\Base Harvest
 Source: ..\example\*.gis; DestDir: {#AppDir}\examples\Base Harvest
 Source: ..\example\*.bat; DestDir: {#AppDir}\examples\Base Harvest
