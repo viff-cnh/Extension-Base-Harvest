@@ -29,10 +29,10 @@ Source: ..\..\src\bin\Debug\Landis.Library.Metadata.dll;       DestDir: {#ExtDir
 ;Source: ..\documentation\LANDIS-II Base Harvest v3.0 User Guide.pdf; DestDir: {#AppDir}\docs
 
 
-; Complete example for testing
-Source: ..\example\*.txt; DestDir: {#AppDir}\examples\Base Harvest
-Source: ..\example\*.gis; DestDir: {#AppDir}\examples\Base Harvest
-Source: ..\example\*.bat; DestDir: {#AppDir}\examples\Base Harvest
+; Complete example for testing the extension
+Source: ..\examples\*.txt; DestDir: {#AppDir}\examples\Base Harvest
+Source: ..\examples\*.gis; DestDir: {#AppDir}\examples\Base Harvest
+Source: ..\examples\*.bat; DestDir: {#AppDir}\examples\Base Harvest
 
 
 ; LANDIS-II identifies the extension with the info in this .txt file

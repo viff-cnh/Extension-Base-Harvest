@@ -15,9 +15,9 @@ geochemical,climatological, ecological, spatial, and landscape ecological mechan
 and 'the model' (LANDIS-II);
 
 	2) The basic process for modifying and subsequently compiling the source code 
-(written in C#) into a new, Extension-Base-Harvest.dll library.
+(written in C#) into a new, <name-of-extension>.dll library.
 
-	3) The basic process for testing a new Extension-Base-Harvest.dll library.
+	3) The basic process for testing a new, <name-of-extension>.dll library.
 
 
 ##########################

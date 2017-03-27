@@ -16,7 +16,7 @@ CellLength  100 << meters, 100 x 100 m = 1 ha
 
 >>	1. Sekect ONE Succession Extension
 >>	2. Select ONE OR MORE Disturbance Extensions (but only ONE harvest extension)
->>	3. Select ONE OR MORE (compatible) Other Extensions
+>>	3. Select ONE OR MORE (compatible) Output Extensions
 
 >>	Selection is made by uncommenting a line (ie, remove the >> symbols) 
 
@@ -27,8 +27,7 @@ CellLength  100 << meters, 100 x 100 m = 1 ha
 
 >> 	Succession Extension     Initialization File
 >> 	--------------------     -------------------
->>   	"Age-only Succession"	age-only-succession_SetUp.txt
-	"Biomass Succession"	biomass-succession_SetUp.txt
+   	"Age-only Succession"	age-only-succession_SetUp.txt
 
 
 >> --------------------------
@@ -37,22 +36,25 @@ CellLength  100 << meters, 100 x 100 m = 1 ha
 
 >> 	Disturbance Extension	Initialization File
 >>	--------------------	-------------------
-	"Base Harvest"		base-harvest_SetUp.txt
->>	"Base BDA"		base-BDA_SetUp.txt
 >>	"Base Fire"		base-fire_SetUp.txt
+	"Base Wind"		base-wind_SetUp.txt
+	"Base Harvest"		base-harvest_SetUp.txt
+	"Base BDA"		base-BDA_SetUp.txt
 
 
 >>   DisturbancesRandomOrder  yes  	<< optional
                          		<< Commented (default) is "no"
 
->> ------------------------
->> OTHER EXTENSONS
+
+>> ----------------------
+>> OUTPUT EXTENSIONS
 >> ----------------------
 
->> 	Other Extension			Initialization File
+>> 	Output Extension		Initialization File
 >> 	----------------		-------------------
-   	"Output Biomass"		output_Biomass.txt		<<compatible w/ "Biomass Succession" only
-  	"Output Biomass Reclass"    	output_BiomassReclass.txt	<<compatible w/ "Biomass Succession" only
+	"Output Max Species Age"	output-max-spp-age_SetUp.txt
+	"Output Cohort Statistics"	output-cohort-stats_SetUp.txt
+
 
 
 >> RandomNumberSeed  147  << optional parameter; uncomment for reproducibilty tests
