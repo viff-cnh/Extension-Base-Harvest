@@ -30,9 +30,9 @@ Source: ..\..\src\bin\Debug\Landis.Library.Metadata.dll;       DestDir: {#ExtDir
 
 
 ; Complete example for testing the extension
-Source: ..\example\*.txt; DestDir: {#AppDir}\examples\Base Harvest
-Source: ..\example\*.gis; DestDir: {#AppDir}\examples\Base Harvest
-Source: ..\example\*.bat; DestDir: {#AppDir}\examples\Base Harvest
+Source: ..\examples\*.txt; DestDir: {#AppDir}\examples\Base Harvest
+Source: ..\examples\*.gis; DestDir: {#AppDir}\examples\Base Harvest
+Source: ..\examples\*.bat; DestDir: {#AppDir}\examples\Base Harvest
 
 
 ; LANDIS-II identifies the extension with the info in this .txt file
