@@ -1,6 +1,6 @@
 #define PackageName      "Base Harvest"
 #define PackageNameLong  "Base Harvest Extension"
-#define Version          "3.0"
+#define Version          "3.1"
 #define ReleaseType      "official"
 #define CoreVersion      "6.0"
 #define CoreReleaseAbbr  ""
@@ -26,19 +26,16 @@ Source: ..\..\src\bin\Debug\Landis.Library.SiteHarvest-v1.dll;       DestDir: {#
 Source: ..\..\src\bin\Debug\Landis.Library.Metadata.dll;       DestDir: {#ExtDir}; Flags: replacesameversion uninsneveruninstall
 
 
-; User Guides are no longer shipped with installer
-;Source: ..\documentation\LANDIS-II Base Harvest v3.0 User Guide.pdf; DestDir: {#AppDir}\docs
-
 
 ; Complete example for testing the extension
-Source: ..\examples\*.txt; DestDir: {#AppDir}\examples\Base Harvest
-Source: ..\examples\*.gis; DestDir: {#AppDir}\examples\Base Harvest
-Source: ..\examples\*.bat; DestDir: {#AppDir}\examples\Base Harvest
+Source: ..\examples\*.txt; DestDir: {#AppDir}\examples\Base Harvest; Flags: replacesameversion
+Source: ..\examples\*.gis; DestDir: {#AppDir}\examples\Base Harvest; Flags: replacesameversion
+Source: ..\examples\*.bat; DestDir: {#AppDir}\examples\Base Harvest; Flags: replacesameversion
 
 
 ; LANDIS-II identifies the extension with the info in this .txt file
 ; NB. New releases must modify the name of this file and the info in it
-#define InfoTxt "Base Harvest 3.0.txt"
+#define InfoTxt "Base Harvest 3.1.txt"
 Source: {#InfoTxt}; DestDir: {#LandisPlugInDir}
 
 
