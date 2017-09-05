@@ -1,6 +1,6 @@
 #define PackageName      "Base Harvest"
 #define PackageNameLong  "Base Harvest Extension"
-#define Version          "3.1"
+#define Version          "3.1.1"
 #define ReleaseType      "official"
 #define CoreVersion      "6.0"
 #define CoreReleaseAbbr  ""
