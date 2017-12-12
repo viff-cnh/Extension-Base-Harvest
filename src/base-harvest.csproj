@@ -3,7 +3,7 @@
     <RootNamespace>base_harvest</RootNamespace>
     <AssemblyName>Landis.Extension.BaseHarvest</AssemblyName>
     <AssemblyTitle>Landis.Extension.BaseHarvest</AssemblyTitle>
-    <AssemblyVersion>3.1.*</AssemblyVersion>
+    <AssemblyVersion>3.1</AssemblyVersion>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
